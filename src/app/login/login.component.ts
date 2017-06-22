@@ -1,13 +1,29 @@
 import { Component} from '@angular/core';
-import { NgForm } from '@angular/forms';
+import { FormGroup, FormBuilder, FormControl, Validators } from '@angular/forms';
 
 @Component({
     selector: 'app-login',
     templateUrl: './login.component.html'
 })
-export class LoginComponent {
-    onSubmit(f: NgForm){
-        console.log(f.value);
-        console.log(f.valid);
+export class LoginComponent{
+
+    form: FormGroup;
+
+    constructor(){
+      this.form = new FormGroup({
+        login: new FormControl('', [
+          Validators.required,
+          Validators.email
+        ]),
+        password: new FormControl('',[
+          Validators.required,
+          Validators.minLength(4)
+        ]),
+      });
+    }
+
+    onSubmit(){
+      console.log(this.form.controls.login.errors.required);
+      return true;
     }
 }

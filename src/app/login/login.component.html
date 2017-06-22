@@ -1,12 +1,7 @@
 <div>
-    <form #f="ngForm" (ngSubmit)="onSubmit(f)" novalidate>
-      <input name="first" ngModel required #first="ngModel">
-      <input name="last" ngModel>
+    <form (ngSubmit)="onSubmit()" [formGroup]="form">
+      <input name="login" formControlName="login" type="text">
+      <input name="password" formControlName="password" type="password">
       <button>Submit</button>
     </form>
-
-    <p>First name value: {{ first.value }}</p>
-    <p>First name valid: {{ first.valid }}</p>
-    <p>Form value: {{ f.value | json }}</p>
-    <p>Form valid: {{ f.valid }}</p>
 </div>
