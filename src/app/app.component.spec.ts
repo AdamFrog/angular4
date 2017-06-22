@@ -12,32 +12,32 @@ import { routes } from './routes';
 
 
 describe('AppComponent', () => {
-  let location: Location;
-  let router: Router;
-  let fixture;
+	let location: Location;
+	let router: Router;
+	let fixture;
 
-  beforeEach(async(() => {
-    TestBed.configureTestingModule({
-      imports:[FormsModule, ReactiveFormsModule,RouterTestingModule.withRoutes(routes)],
-      declarations: [
-        AppComponent,
-        LoginComponent,
-        DashboardComponent
-      ],
-    }).compileComponents();
+  	beforeEach(async(() => {
+		TestBed.configureTestingModule({
+			imports:[FormsModule, ReactiveFormsModule,RouterTestingModule.withRoutes(routes)],
+			declarations: [
+				AppComponent,
+				LoginComponent,
+				DashboardComponent
+			],
+		}).compileComponents();
 
-    router = TestBed.get(Router);
-    location = TestBed.get(Location);
+		router = TestBed.get(Router);
+		location = TestBed.get(Location);
 
-    fixture = TestBed.createComponent(AppComponent);
-    router.initialNavigation();
+		fixture = TestBed.createComponent(AppComponent);
+		router.initialNavigation();
 
-  }));
+  	}));
 
-  it('navigate to "login" redirects you to /login', fakeAsync(() => {
-    router.navigate(['login']);
-    tick(50);
-    expect(location.path()).toBe('/login');
-  }));
+  	it('navigate to "login" redirects you to /login', fakeAsync(() => {
+		router.navigate(['login']);
+		tick(50);
+		expect(location.path()).toBe('/login');
+  	}));
 
 });
